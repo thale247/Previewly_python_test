@@ -4,6 +4,7 @@ import random
 
 app = FastAPI()
 
+#test
 fake_db = {
     "users": ["alice", "bob", "charlie"],
     "items": ["laptop", "phone", "keyboard"]
