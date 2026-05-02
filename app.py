@@ -56,6 +56,7 @@ def homepage():
     """
 
 
+
 @app.get("/users")
 def get_users():
     time.sleep(random.uniform(0.1, 0.5))
