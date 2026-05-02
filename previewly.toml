@@ -1,6 +1,8 @@
 internal_port = 8080
 runtime = "python"
-startup_command = "uvicorn app:app --host 0.0.0.0 --port $PORT"
+
+# Use the committed Dockerfile below (exec-form uvicorn ⇒ reliable OTLP auto-instrument).
+dockerfile = "Dockerfile"
+
 [env]
-# Optional runtime keys Previewly merges before Fly overwrites HOST/PORT.
 LOG_LEVEL = "info"
