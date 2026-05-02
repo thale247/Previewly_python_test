@@ -1,0 +1,6 @@
+internal_port = 8080
+runtime = "python"
+startup_command = "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+[env]
+# Optional runtime keys Previewly merges before Fly overwrites HOST/PORT.
+LOG_LEVEL = "info"
