@@ -1,7 +1,8 @@
 internal_port = 8080
 runtime = "python"
 
-# Use the committed Dockerfile below (exec-form uvicorn ⇒ reliable OTLP auto-instrument).
+# Committed Dockerfile: exec-form uvicorn so Previewly can prepend opentelemetry-instrument when enabled.
+# App entry is backend.main:app (manual OpenTelemetry in backend/telemetry.py).
 dockerfile = "Dockerfile"
 
 [env]

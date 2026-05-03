@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Previewly Python demo</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <p class="eyebrow">Previewly · Python example</p>
+        <h1>Dice roller + manual OpenTelemetry</h1>
+        <p class="lede">
+          This page is the <strong>frontend</strong> (static HTML/CSS/JS). It calls the <strong>FastAPI backend</strong> on
+          <code>/api/*</code>. Each roll creates a span, increments a counter, records a histogram, and emits a structured log
+          — all wired explicitly in Python (no <code>LoggingInstrumentor</code>, no FastAPI auto-instrumentor).
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="controls-heading">
+        <h2 id="controls-heading">Try it</h2>
+        <label class="field">
+          <span>Sides</span>
+          <input id="sides" type="number" min="2" max="100" value="8" />
+        </label>
+        <div class="actions">
+          <button type="button" id="roll">Roll dice</button>
+          <button type="button" id="health" class="secondary">GET /api/health</button>
+        </div>
+        <pre id="out" class="out" aria-live="polite">Ready.</pre>
+      </section>
+
+      <section class="panel muted">
+        <h2>Observability hints</h2>
+        <ul>
+          <li>Traces: span names <code>api.roll_dice</code> and <code>api.health</code></li>
+          <li>Metrics: <code>previewly.demo.dice_rolls_total</code>, <code>previewly.demo.dice_value</code></li>
+          <li>Logs: body contains <code>rolled dice</code> after a roll</li>
+        </ul>
+      </section>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
