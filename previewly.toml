@@ -1,8 +1,8 @@
 internal_port = 8080
 runtime = "python"
 
-# Committed Dockerfile: exec-form uvicorn so Previewly can prepend opentelemetry-instrument when enabled.
-# App entry is backend.main:app (manual OpenTelemetry in backend/telemetry.py).
+# Committed Dockerfile: exec-form `uvicorn` so Previewly's OTLP ENTRYPOINT bootstrap can wrap it with
+# `opentelemetry-instrument` without nesting another wrapper. OTEL deps live in requirements.txt.
 dockerfile = "Dockerfile"
 
 [env]

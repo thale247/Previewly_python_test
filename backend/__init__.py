@@ -1,1 +1,1 @@
-"""Previewly Python demo: FastAPI backend + static frontend with manual OpenTelemetry."""
+"""Previewly Python demo: FastAPI backend + static frontend with OpenTelemetry auto-instrumentation."""

@@ -9,18 +9,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from backend import telemetry
-
-telemetry.configure()
-
-# Import API routes after global MeterProvider / TracerProvider are registered.
 from backend.api import router as api_router
 
 _FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 
 app = FastAPI(
     title="Previewly Python observability demo",
-    description="Manual traces, metrics, and logs — compatible with opentelemetry-instrument but not required.",
+    description="OpenTelemetry via auto-instrumentation (FastAPI ASGI + stdlib logging → OTLP when enabled).",
     version="1.0.0",
 )
 

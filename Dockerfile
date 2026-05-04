@@ -1,8 +1,14 @@
-# Python + FastAPI preview with manual OpenTelemetry (traces, metrics, logs).
-# Exec-form CMD keeps `uvicorn` as argv0 — Previewly may still prepend `opentelemetry-instrument` on some tiers;
-# this codebase never imports auto-instrumentors; globals are registered in `backend.telemetry.configure()` so
-# auto-instrumentation can attach to the same providers if you choose to wrap the process.
-# Keep EXPOSE / --port aligned with `internal_port` in previewly.toml (8080).
+# Python + FastAPI preview with OpenTelemetry auto-instrumentation (no manual SDK wiring in app code).
+#
+# Starter/Pro: Previewly appends distro layers + ENTRYPOINT bootstrap that runs `uvicorn` through
+# `opentelemetry-instrument` when PREVIEWLY_OTEL_AUTO_BOOTSTRAP=1 — keep CMD as plain `uvicorn` here
+# so the process is not double-wrapped.
+#
+# Local OTLP: install deps and run:
+#   opentelemetry-instrument uvicorn backend.main:app --host 0.0.0.0 --port 8080
+# with OTEL_* set (see otel/README.md).
+#
+# Keep EXPOSE / port aligned with `internal_port` in previewly.toml (8080).
 
 FROM python:3.12-slim-bookworm
 
